@@ -1,29 +1,37 @@
-# 🤖 Discord Weather Bot
+# Bot de Clima para Discord 🌤️🌧️
 
-Um bot de Discord desenvolvido em **Python** usando a biblioteca `discord.py`, que fornece informações sobre o **clima em tempo real** e a **chance de chuva** em qualquer cidade do mundo.  
-Ele utiliza a **API do OpenWeather** para buscar dados meteorológicos e apresenta as respostas em **embeds personalizadas** no Discord.  
-
----
-
-## ✨ Funcionalidades
-
-- `!chuva <cidade>` → Mostra a **chance de chuva** para as próximas 18 horas, com frases divertidas.
-- Respostas em **embeds bonitas** no Discord.
-- Mensagens de erro amigáveis caso a cidade não seja encontrada.
+Este é um bot de Discord feito em Python que fornece informações sobre o clima e a chance de chuva em cidades do Brasil e do mundo.  
 
 ---
 
-## 🛠️ Tecnologias utilizadas
+## Funcionalidades
 
-- **Python 3.10+**
-- [discord.py](https://discordpy.readthedocs.io/en/stable/) → integração com o Discord
-- [Requests](https://requests.readthedocs.io/) → requisições HTTP
-- [OpenWeather API](https://openweathermap.org/api) → dados do clima
+- **Comando `!clima <cidade>`**  
+  Mostra a temperatura, sensação térmica, umidade e condição do tempo de uma cidade.
+
+- **Comando `!chuva <cidade>`**  
+  Mostra a previsão de chuva para as próximas ~18 horas, com porcentagem de chance e uma frase aleatória divertida.
+
+- **Comando `!olá`**  
+  Saudação do bot.
+
+- **Tratamento de erros**  
+  - Mensagem amigável se o comando não existir  
+  - Aviso caso a cidade não seja encontrada  
 
 ---
 
-## 📥 Instalação e uso
+## Tecnologias e Bibliotecas
+
+- Python 3.10+  
+- [discord.py](https://discordpy.readthedocs.io/en/stable/)  
+- [requests](https://pypi.org/project/requests/)  
+- API do [OpenWeatherMap](https://openweathermap.org/api)  
+
+---
+
+## Como usar
 
 1. Clone este repositório:
 ```bash
-git clone https://github.com/miguelfreitas0901/discord-weather-bot.git
+git clone https://github.com/miguelfreitas0901/Bot-discord-Clima.git
