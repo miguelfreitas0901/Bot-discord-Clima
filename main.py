@@ -10,8 +10,8 @@ API_KEY = config.API_KEY
 DISCORD_TOKEN = config.DISCORD_TOKEN
 
 intents = discord.Intents.default()
-intents.message_content = True
-bot = commands.Bot(command_prefix="!", intents=intents)
+intents.message_content = True  # permite ler o conteúdo das mensagens
+bot = commands.Bot(command_prefix='!', intents=intents)
 
 def remover_acentos(texto: str) -> str:
     return ''.join(
@@ -93,6 +93,37 @@ async def chuva(ctx, *, cidade: str):
     except Exception as e:
         await ctx.send(f"⚠️ Erro: {type(e).__name__}: {e}")
         
+@bot.command()
+async def clima(ctx, *, cidade: str):
+    try:
+        url = f"http://api.openweathermap.org/data/2.5/weather?q={cidade}&appid={API_KEY}&lang=pt_br&units=metric"
+        resposta = requests.get(url)
+        dados = resposta.json()
+
+        if dados["cod"] != 200:
+            await ctx.send("❌ Não encontrei essa cidade. Verifique o nome.")
+            return
+
+        nome_cidade = dados["name"]
+        descricao = dados["weather"][0]["description"].capitalize()
+        temp = dados["main"]["temp"]
+        sensacao = dados["main"]["feels_like"]
+        umidade = dados["main"]["humidity"]
+
+        embed = discord.Embed(
+            title=f"🌤️ Clima em {nome_cidade}",
+            color=discord.Color.blue()
+        )
+        embed.add_field(name="🌡️ Temperatura", value=f"{temp}°C", inline=True)
+        embed.add_field(name="🤔 Sensação", value=f"{sensacao}°C", inline=True)
+        embed.add_field(name="💧 Umidade", value=f"{umidade}%", inline=True)
+        embed.add_field(name="📋 Condição", value=descricao, inline=False)
+
+        await ctx.send(embed=embed)
+
+    except Exception as e:
+        await ctx.send(f"⚠️ Ocorreu um erro: {e}")
+
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
