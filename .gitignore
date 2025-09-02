@@ -1,0 +1,20 @@
+# Ignorar arquivos sensíveis
+config.py
+
+# Cache do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ambiente virtual
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Configurações do sistema/editor
+.vscode/
+.idea/
+.DS_Store
